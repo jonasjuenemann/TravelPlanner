@@ -3,65 +3,64 @@
 <head>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            background-color: #E8DCD9;
-            font-family: cursive;
-        }
-
-        .blue {
-            color: #187bcd
-        }
-
-        .glow {
-            font-size: 30px;
-            color: blue;
-            text-align: center;
-            -webkit-animation: glow 1s ease-in-out infinite alternate;
-            -moz-animation: glow 1s ease-in-out infinite alternate;
-            animation: glow 1s ease-in-out infinite alternate;
-        }
-
-        @-webkit-keyframes glow {
-            from {
-                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-            }
-
-            to {
-                text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
-            }
-        }
-    </style>
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     {% if title %}
-        <title>{{ title }} - TriPlanned</title>
+        <title>{{ title }} - TravelPlanner</title>
     {% else %}
-        <title>Welcome to TriPlanned</title>
+        <title>Welcome to TravelPlanner</title>
     {% endif %}
 </head>
 <body>
-<div>
-    <center><h3 class="blue">TriPlanned</h3>
-        <center>
-            <center class="glow">&#127796;</center>
-            <a class="blue pull-left" href="{{ url_for('index') }}">Home</a>
-            {% if current_user.is_anonymous %}
-                <a class="blue pull-right" href="{{ url_for('login') }}">Login</a>
-            {% else %}
-                <a class="blue pull-right" href="{{ url_for('user', username=current_user.username) }}">Profile</a>
-                <a class="blue pull-left" href="{{ url_for('logout') }}">Logout</a>
-            {% endif %}
-</div>
-<hr>
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
+<main>
+    <section class="landing">
+        <nav>
+            <h1 id="logo"><span class="glow">&#127796;</span>TravelPlanner</h1>
+            <ul class="nav-links">
+                <li><a class="" href="{{ url_for('index') }}">Home</a></li>
+                {% if current_user.is_anonymous %}
+                    <li><a class="" href="{{ url_for('login') }}">Login</a></li>
+                {% else %}
+                    <li><a class="" href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+                    <li><a class="" href="{{ url_for('logout') }}">Logout</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
 
-            {% endfor %}
-        </ul>
-    {% endif %}
-{% endwith %}
-{% block content %}{% endblock %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+    </section>
+</main>
+<div class="intro">
+    <div class="intro-text">
+        <h1 class="hide">
+            <span class="text">Good Company in journey</span>
+        </h1>
+        <h1 class="hide">
+            <span class="text">makes the way</span>
+        </h1>
+        <h1 class="hide">
+            <span class="text">seem shorter.</span>
+        </h1>
+        <h3 class="hide citation">
+            <span class="text">Izaak Walton</span>
+        </h3>
+    </div>
+</div>
+<div class="slider"></div>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"
+        integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
+        crossorigin="anonymous"
+></script>
+<script type="text/javascript"
+         src="{{ url_for('static', filename='js/animation.js') }}"></script>
 </body>
 </html>

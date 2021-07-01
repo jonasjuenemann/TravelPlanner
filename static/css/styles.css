@@ -1,0 +1,190 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /*Die Werte width und height enthalten padding und border, aber nicht margin
+    Standard waere: content-box -> width und height berechnen sich nur aus dem Inhalt des Elementes und enthalten weder border, margin oder padding*/
+}
+
+html {
+    font-size: 18px;
+}
+
+main {
+    font-family: "Heebo", sans-serif;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+.landing {
+    min-height: 100vh;
+    background: url("img/sea.jpg");
+    background-size: cover;
+    padding: 0 4rem;
+}
+
+nav {
+    display: flex; /* Elemente nebeneinander (flexibel anordbar)
+    Standard: inline, sonst: block, inline-block*/
+    align-items: center;
+    justify-content: space-between;
+    min-height: 10vh;
+    font-family: "Lobster", sans-serif;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    padding: 0 4rem;
+
+}
+
+#logo {
+    font-family: "Lobster", cursive;
+    font-weight: lighter;
+    font-size: 2rem;
+    color: rgb(61,61,61)
+}
+
+.big-text {
+    font-size: 4rem;
+    color: rgb(61,61,61);
+}
+
+.content {
+    position: absolute; /*Koennen wir rumbewegen soviel wir wollen*/
+    top: 30%;
+    left: 50%;
+    /* not really centered */
+    transform: translate(-50%, -30%);
+    font-family: "Heebo", cursive;
+}
+
+.small-content {
+    margin: 1rem;
+}
+.small-content :is(h1, h2, h3, ul, form, p){
+    margin: 0.5rem;
+}
+
+#remember_me {
+    cursor: pointer;
+}
+
+input:is(#submit){
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+input:is(#submit):hover {
+    background-color: rgb(61,61,61);
+    color: white;
+}
+
+input {
+    border-radius: 5px;
+}
+
+.intro {
+    background: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /*horizontales Centern*/
+    align-items: center; /*vertikal zentriert */
+}
+
+.intro-text :is(h1) {
+    color: rgb(227, 242, 255);
+    font-family: "Heebo", sans-serif;
+    font-size: 5rem;
+}
+
+.intro-text :is(h3) {
+    color: rgb(227, 242, 255);
+    font-family: "Heebo", sans-serif;
+    font-size: 2rem;
+}
+
+
+.citation {
+    text-align: right;
+}
+
+.slider {
+    background: #3e3e5a;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /*horizontales Centern*/
+    align-items: center;
+    transform: translateY(100%);/*100% nach unten, also erstmal "unsichtbar"*/
+}
+
+.hide {
+    background:black;
+    overflow: hidden;
+}
+
+.hide span {
+    transform: translateY(100%); /*s.o.*/
+    display: block; /*spans are inline by default and thus cant be moved by transform */
+}
+
+body {
+    font-family: cursive;
+    text-align: center;
+}
+
+nav a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+nav a:hover {
+    color: white;
+}
+
+.blue {
+    color: blue;
+}
+
+.glow {
+    font-size: 30px;
+    color: blue;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+}
